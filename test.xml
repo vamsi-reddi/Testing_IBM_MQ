@@ -1,0 +1,7 @@
+<OrderStruct>
+    <Order>
+        <id>123</id>
+        <name>Widget</name>
+        <quantity>10</quantity>
+    </Order>
+</OrderStruct>
