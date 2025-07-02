@@ -2,20 +2,27 @@ package main
 
 import (
 	"encoding/xml"
+	"fmt"
 	"log"
 	"os"
 )
 
 type OrderStruct struct {
-	Order  struct {
-		ID string `xml:"id"`
-		Name string `xml:"name"`
-		Quantity int `xml:"quantity"`
-	} 
+	Book []struct {
+		ID        string `xml:"id,attr"`
+		Title     string `xml:"title"`
+		Author    string `xml:"author"`
+		Genre     string `xml:"genre"`
+		Published string `xml:"published"`
+		Price     struct {
+			Currency string `xml:"currency,attr"`
+			Value    string `xml:",chardata"`
+		} `xml:"price"`
+	} `xml:"book"`
 }
 
-func processXMLFile(filepath string) OrderStruct{
-	data , err := os.ReadFile(filepath)
+func processXMLFile(filepath string) OrderStruct {
+	data, err := os.ReadFile(filepath)
 
 	var order OrderStruct
 
@@ -25,6 +32,8 @@ func processXMLFile(filepath string) OrderStruct{
 
 	err = xml.Unmarshal(data, &order)
 
+	fmt.Println(order)
+
 	if err != nil {
 		log.Fatal("error parsing xml to object : ", err)
 	}
@@ -33,11 +42,11 @@ func processXMLFile(filepath string) OrderStruct{
 }
 
 func processMessage(msg string) {
-    var order OrderStruct
-    err := xml.Unmarshal([]byte(msg), &order)
-    if err != nil {
-        log.Println("Error unmarshaling:", err)
-        return
-    }
-    log.Printf("Order received: %+v\n", order)
+	var order OrderStruct
+	err := xml.Unmarshal([]byte(msg), &order)
+	if err != nil {
+		log.Println("Error unmarshaling:", err)
+		return
+	}
+	log.Printf("Order received: %+v\n", order)
 }

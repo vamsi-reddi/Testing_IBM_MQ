@@ -1,7 +1,24 @@
-<OrderStruct>
-    <Order>
-        <id>123</id>
-        <name>Widget</name>
-        <quantity>10</quantity>
-    </Order>
-</OrderStruct>
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+  <book id="1">
+    <title>The Pragmatic Programmer</title>
+    <author>Andy Hunt</author>
+    <genre>Programming</genre>
+    <published>1999</published>
+    <price currency="USD">42.95</price>
+  </book>
+  <book id="2">
+    <title>Clean Code</title>
+    <author>Robert C. Martin</author>
+    <genre>Programming</genre>
+    <published>2008</published>
+    <price currency="USD">33.50</price>
+  </book>
+  <book id="3">
+    <title>1984</title>
+    <author>George Orwell</author>
+    <genre>Dystopian</genre>
+    <published>1949</published>
+    <price currency="USD">12.00</price>
+  </book>
+</library>
